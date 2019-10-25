@@ -28,11 +28,9 @@ class StarRating extends Component {
   // Pass the function to a Star component via props
   handleSetRating = (rating) => {
     // if the star of the current rating is clicked, reset rating to 0
-    if (rating == this.state.rating) {
-      this.setState({ rating: 0 });
-    } else {
-      this.setState({ rating });
-    }
+    this.setState(prevState => ({
+      rating: rating == prevState.rating ? 0 : rating
+    }));
   }
 
   render() {
